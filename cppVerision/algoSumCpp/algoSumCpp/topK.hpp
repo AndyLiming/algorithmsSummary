@@ -40,10 +40,23 @@ private:
 class topkQuickSort {
 public:
   vector<int> getTopK(vector<int>& input, int K) {
-
+    int right = input.size() - 1;
+    quickSelect(input, 0, right, K);
+    return vector<int>(input.begin(), input.begin() + K);
   }
 private:
   void quickSelect(vector<int>& input, int left, int right, int K) {
-  
+    if (left >= right) return;
+    int privot = input[left];
+    int i = left, j = right;
+    while (i < j) {
+      while (i<j&&input[j]>privot)j--;
+      input[i] = input[j];
+      while (i<j&&input[i]<=privot)i++;
+      input[j] = input[i];
+    }
+    input[i] = privot;
+    if (i > K) quickSelect(input, left, i - 1, K);
+    else if(i<K) quickSelect(input, i+1, right, K);
   }
 };

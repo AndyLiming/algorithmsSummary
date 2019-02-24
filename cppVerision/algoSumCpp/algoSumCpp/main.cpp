@@ -4,7 +4,8 @@
 using namespace std;
 
 int main() {
-  topkHeapSort topk;
+  //topkHeapSort topk;
+  topkQuickSort topk;
   int k,tmp;
   cin >> k;
   vector<int>input;
