@@ -33,45 +33,4 @@
 #include <sstream>
 #include <cmath>
 
-using namespace std;
-/* Definition for an interval.*/
-struct Interval {
-  int start;
-  int end;
-  Interval() : start(0), end(0) {}
-  Interval(int s, int e) : start(s), end(e) {}
-};
-/* Definition for singly - linked list.*/
-struct ListNode {
-  int val;
-  ListNode *next;
-  ListNode(int x) : val(x), next(NULL) {}
-};
-/* Definition for a binary tree node.*/
-struct TreeNode {
-  int val;
-  TreeNode *left;
-  TreeNode *right;
-  TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-};
-/* Definition for binary tree with next pointer.*/
-struct TreeLinkNode {
-  int val;
-  TreeLinkNode *left, *right, *next;
-  TreeLinkNode(int x) : val(x), left(NULL), right(NULL), next(NULL) {}
-};
-/* Definition for undirected graph.*/
-struct UndirectedGraphNode {
-  int label;
-  vector<UndirectedGraphNode *> neighbors;
-  UndirectedGraphNode(int x) : label(x) {};
-};
-/* Definition for singly-linked list with a random pointer.*/
-struct RandomListNode {
-  int label;
-  RandomListNode *next, *random;
-  RandomListNode(int x) : label(x), next(NULL), random(NULL) {}
-};
-
-
 
