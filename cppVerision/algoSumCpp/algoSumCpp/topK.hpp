@@ -47,15 +47,15 @@ public:
 private:
   void quickSelect(vector<int>& input, int left, int right, int K) {
     if (left >= right) return;
-    int privot = input[left];
+    int pivot = input[left];
     int i = left, j = right;
     while (i < j) {
-      while (i<j&&input[j]>privot)j--;
+      while (i<j&&input[j]>pivot)j--;
       input[i] = input[j];
-      while (i<j&&input[i]<=privot)i++;
+      while (i<j&&input[i]<=pivot)i++;
       input[j] = input[i];
     }
-    input[i] = privot;
+    input[i] = pivot;
     if (i > K) quickSelect(input, left, i - 1, K);
     else if(i<K) quickSelect(input, i+1, right, K);
   }
