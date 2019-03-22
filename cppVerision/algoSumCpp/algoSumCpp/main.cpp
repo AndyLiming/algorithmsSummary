@@ -1,6 +1,8 @@
 #include "head.hpp"
 #include "topK.hpp"
 #include "sort.hpp"
+#include "aboutString.hpp"
+#include "aboutPath.hpp"
 
 using namespace std;
 
@@ -40,14 +42,21 @@ int main() {
   //for (int i = ans.size()-1;i>-1;--i) {
   //  cout << ans[i] << " " ;
   //}
+
   //sort
-  int tmp;
-  vector<int>input;
-  while (cin >> tmp) input.emplace_back(tmp);
-  //quickSort(input);
-  //heapSort(input);
-  mergeSort(input);
-  for (int i = 0;i<input.size();++i) {
-      cout << input[i] << " " ;
-    }
+  //int tmp;
+  //vector<int>input;
+  //while (cin >> tmp) input.emplace_back(tmp);
+  ////quickSort(input);
+  ////heapSort(input);
+  //mergeSort(input);
+  //for (int i = 0;i<input.size();++i) {
+  //    cout << input[i] << " " ;
+  //  }
+
+  //aboutString
+  string s,t;
+  cin >> s>>t;
+  int ans = longestComSub(s, t);
+  return 0;
 }
