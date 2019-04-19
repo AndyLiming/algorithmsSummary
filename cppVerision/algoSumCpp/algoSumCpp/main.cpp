@@ -3,6 +3,8 @@
 #include "sort.hpp"
 #include "aboutString.hpp"
 #include "aboutPath.hpp"
+#include "aboutLinkList.hpp"
+#include "binaryTree.hpp"
 
 using namespace std;
 
@@ -55,8 +57,23 @@ int main() {
   //  }
 
   //aboutString
-  string s,t;
-  cin >> s>>t;
-  int ans = longestComSub(s, t);
+  string s = "wahaha hello world! how are you? fine thank you! and you?";
+  //cin >> s;
+  reverseWords(s);
+  //reverse(s.begin(), s.end());
+  cout << s << endl;
+  //cout << longestUndupStr(s) << endl;
+  //return 0;
+
+  //List
+  //int k;
+  //cin >> k;
+  //ListNode *head = inputList();
+  //ListNode *ans = reverseList(head);
+  //ListNode *ans = insertList(head, 3, 8);
+  //ListNode *ans = deleteList(head, 3);
+  //cout << kthNodeFromTail(head, k) << endl;
+  //outputList(ans);
+  //printListReversinglyRec(head);
   return 0;
 }

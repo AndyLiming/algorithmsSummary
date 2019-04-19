@@ -48,7 +48,7 @@ int longestComSub(string s, string t) {
   }
   for (int i = 1; i < lens; ++i){
     ++compare;
-    // with odd/even to swith working row
+    // with odd/even to switch working row
     int cur = ((i & 1) == 1); //index for current working row
     int pre = ((i & 1) == 0); //index for previous working row
     table[cur][0] = 0;
@@ -83,7 +83,7 @@ int longestComSub(string s, string t) {
 }
 
 /*find pattern in a string and locate it*/
-int KMP(string s, string pattern) {
+int KMP(string s, string pattern) {//next -> find length of the longest same prefix and suffix
   vector<int> next(pattern.length(), -1);
   int k = -1;
   //calculate vector next
@@ -112,4 +112,54 @@ int KMP(string s, string pattern) {
     }
   }
   return j == pattern.length() ? i - j : -1;
+}
+
+/*longest unduplicated sub-string*/
+int longestUndupStr(string s) {
+  if (s.size() <= 1) return s.size();
+  vector<int> charMap(256, -1);//record the latest position for each char
+  int start = -1;//start position for longest sub-string (not include)
+  int maxLen = 0;
+  for (int i = 0;i < s.size();++i) {
+    if (charMap[s[i]] > start) {//duplicate
+      start = charMap[s[i]];
+    }
+    charMap[s[i]] = i;//update char position
+    maxLen = max(maxLen, i - start);//update length
+  }
+  return maxLen;
+}
+
+/*reverse a string in place*/
+void reverseStr(string &s) {
+  int begin = 0, end = s.size() - 1;
+  if (end <= 0) return;
+  while (begin < end) {
+    char t = s[begin];
+    s[begin] = s[end];
+    s[end] = t;
+    ++begin;
+    --end;
+  }
+}
+/*reverse words in a string (split by space)*/
+void reverseWords(string &s) {
+  reverse(s.begin(),s.end());
+  int start = 0;
+  /*auto begin = s.begin();
+  auto ind = s.begin();
+  while (ind != s.end() || begin!=s.end()) {
+    ++ind;
+    if ( ind == s.end() || *ind == ' ') {
+      reverse(begin, ind);
+      begin = ind + 1;
+    }
+  }*/
+  for (int i = 1;i < s.size();++i) {
+    if (s[i] == ' ' || s[i]=='\0') {
+      reverse(s.begin() + start, s.begin() + i);
+      start = i + 1;
+    }
+  }
+  reverse(s.begin() + start, s.end());
 }
