@@ -57,23 +57,24 @@ int main() {
   //  }
 
   //aboutString
-  string s = "wahaha hello world! how are you? fine thank you! and you?";
+  //string s = "wahaha hello world! how are you? fine thank you! and you?";
   //cin >> s;
-  reverseWords(s);
+  //reverseWords(s);
   //reverse(s.begin(), s.end());
-  cout << s << endl;
+  //cout << s << endl;
   //cout << longestUndupStr(s) << endl;
   //return 0;
 
   //List
   //int k;
   //cin >> k;
-  //ListNode *head = inputList();
+  ListNode *head = inputList();
+  ListNode *ans = oddEvenSort(head);
   //ListNode *ans = reverseList(head);
   //ListNode *ans = insertList(head, 3, 8);
   //ListNode *ans = deleteList(head, 3);
   //cout << kthNodeFromTail(head, k) << endl;
-  //outputList(ans);
+  outputList(ans);
   //printListReversinglyRec(head);
   return 0;
 }

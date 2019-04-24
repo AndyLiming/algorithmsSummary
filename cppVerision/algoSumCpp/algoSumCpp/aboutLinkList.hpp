@@ -101,3 +101,29 @@ void printListReversinglyRec(ListNode * head) {
     cout << head->val << " ";
   }
 }
+
+
+//odd even sort, group all odd value nodes together followed by the even value nodes
+ListNode *oddEvenSort(ListNode *head) {
+  if (head == nullptr || head->next == nullptr) return head;
+  ListNode *helper1 = new ListNode(-1);
+  helper1->next = head;
+  ListNode *helper2 = new ListNode(-1);
+  ListNode *pre = helper1, *cur = head, *hp2 = helper2;
+  while (cur != nullptr) {
+    //cout << cur->val << endl;
+    if (cur->val % 2 == 0) {
+      pre->next = cur->next;
+      hp2->next = cur;
+      hp2 = hp2->next;
+      cur->next = nullptr;
+      cur = pre->next;
+    }
+    else {
+      cur = cur->next;
+      pre = pre->next;
+    }
+  }
+  pre->next = helper2->next;
+  return head;
+}
