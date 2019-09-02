@@ -163,3 +163,28 @@ void reverseWords(string &s) {
   }
   reverse(s.begin() + start, s.end());
 }
+
+/*Permutation*/
+bool isRepeat(string s, int start, int end) {
+  for (int i = start;i < end;++i) {
+    if (s[i] == s[end]) return true;
+  }
+  return false;
+}
+void strPermutation(string s, int start) {
+  if (start == s.size()) {
+    cout << s << endl;
+  }
+  else {
+    for (int i = start;i < s.size();++i) {
+      if (!isRepeat(s, start, i)) {
+        swap(s[start], s[i]);
+        strPermutation(s, start + 1);
+        swap(s[start], s[i]);
+      }
+    }
+  }
+}
+void permutation(string s) {
+  strPermutation(s, 0);
+}

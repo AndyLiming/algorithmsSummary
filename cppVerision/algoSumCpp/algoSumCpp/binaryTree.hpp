@@ -88,3 +88,45 @@ void postorder(TreeNode *root) {
   }
 }
 /****************************************************************/
+
+/*vertical order*/
+vector<vector<int>> verticalOrder(TreeNode * root) {
+  vector<vector<int>> ans;
+  if (root == nullptr) return ans;
+  map<int, vector<int>> m;
+  queue<pair<int, TreeNode*>> q;
+  q.push({ 0,root });
+  while (!q.empty()) {
+    auto cur = q.front();
+    q.pop();
+    m[cur.first].push_back(cur.second->val);
+    if (cur.second->left != nullptr) q.push({ cur.first-1,cur.second->left });
+    if (cur.second->right != nullptr) q.push({ cur.first + 1,cur.second->right });
+  }
+  for (auto a : m)ans.push_back(a.second);
+  return ans;
+}
+/***************************************************************/
+
+/*level order*/
+void levelOrder(TreeNode*root) {
+  queue<TreeNode*>q;
+  TreeNode*last = root, *nextLast = root;
+  int width = 0;
+  if (root == nullptr) return;
+  q.push(root);
+  while (!q.empty()) {
+    TreeNode*cur = q.front();
+    q.pop();
+    cout << cur->val;
+    if (cur->left) q.push(cur->left);
+    if (cur->right) q.push(cur->right);
+    if(!q.empty()) nextLast = q.back();
+    if (cur == last) {
+      cout << endl;
+      last = nextLast;
+      width = max(width, (int)q.size());
+    }
+  }
+  cout << "max width: " << width << endl;
+}

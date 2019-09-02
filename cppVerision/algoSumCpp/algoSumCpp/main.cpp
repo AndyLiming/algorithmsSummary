@@ -5,6 +5,7 @@
 #include "aboutPath.hpp"
 #include "aboutLinkList.hpp"
 #include "binaryTree.hpp"
+#include "classicProb.hpp"
 
 using namespace std;
 
@@ -68,13 +69,56 @@ int main() {
   //List
   //int k;
   //cin >> k;
-  ListNode *head = inputList();
-  ListNode *ans = oddEvenSort(head);
+  //ListNode *head = inputList();
+  //ListNode *ans = oddEvenSort(head);
   //ListNode *ans = reverseList(head);
   //ListNode *ans = insertList(head, 3, 8);
   //ListNode *ans = deleteList(head, 3);
   //cout << kthNodeFromTail(head, k) << endl;
-  outputList(ans);
+  //outputList(ans);
   //printListReversinglyRec(head);
+
+  /*test queue with list*/
+  //QueueWithList ql = QueueWithList();
+  //int n;
+  //cin >> n;
+  //for (int i = 0;i < n;++i) {
+  //  int tmp;
+  //  cin >> tmp;
+  //  ql.push(tmp);
+  //}
+  //while (!ql.empty()) {
+  //  cout << ql.front() << " ";
+  //  ql.pop();
+  //}
+  //cout << endl;
+  /*********************/
+  /*int n, m;
+  cin >> n >> m;
+  vector<vector<int>> matrix(n, vector<int>(m));
+  for (int i = 0;i < n;++i) {
+    for (int j = 0;j < m;++j) {
+      cin >> matrix[i][j];
+    }
+  }
+  cout << maxSumSubMat(matrix) << endl;*/
+  //tree
+  //TreeNode*root = new TreeNode(1);
+  //root->left = new TreeNode(2);
+  //root->right = new TreeNode(3);
+  //root->left->left = new TreeNode(4);
+  //root->left->right = new TreeNode(5);
+  //root->right->right = new TreeNode(6);
+  //root->right->left = new TreeNode(7);
+  //root->right->left->right = new TreeNode(77);
+  /*levelOrder(root);*/
+  //vector<vector<int>> ans = verticalOrder(root);
+  //for (auto a : ans) {
+  //  for (auto i : a) cout << i << " ";
+  //  cout << endl;
+  //}
+  string s;
+  cin >> s;
+  permutation(s);
   return 0;
 }

@@ -1,3 +1,4 @@
+#pragma once
 #include"head.hpp"
 using namespace std;
 
@@ -9,12 +10,11 @@ struct ListNode {
 
 /************************************************/
 //input ans output
-ListNode * inputList() {
+ListNode* inputList() {
   int tmp;
   ListNode *helper = new ListNode(-1);
   ListNode *p = helper;
   while (cin >> tmp) {
-    //p->next = &ListNode (tmp);
     p->next = new ListNode(tmp);
     p = p->next;
   }
