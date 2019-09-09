@@ -173,3 +173,82 @@ vector<int> deleteKmin(vector<int> & num, int k) {
   }
   return num;
 }
+
+//ipv4与整数相互转化
+unsigned int convertIPtoInt(const string ip) {
+  vector<unsigned int> a(4);
+  unsigned int ans = 0;
+  int ids = 0, ide = 0,i=0;
+  while (ids < ip.size()) {
+    while (ide < ip.size() && ip[ide] != '.') ++ide;
+    a[i]= stoi(ip.substr(ids, ide - ids));
+    ids = ide + 1;
+    ide = ide + 1;
+    ++i;
+  }
+  ans = (a[0] << 24) | (a[1] << 16) | (a[2] << 8) | a[3];
+  return ans;
+}
+string convertInttoIP(unsigned int a) {
+  string ans = "";
+  unsigned int flag = 0xff000000,shift=24;
+  for (int i = 0;i < 4;++i) {
+    ans += to_string((a&flag) >> shift);
+    ans += '.';
+    flag = flag >> 8;
+    shift -= 8;
+  }
+  ans.pop_back();
+  return ans;
+}
+
+//best time to buy and sell stocks:
+//1. 只允许买卖一次
+int maxProfitBuySellOnce(vector<int> &prices) {
+  if (prices.size() < 2) return 0;
+  int buy = prices[0],maxPro=0;
+  for (int i = 1;i < prices.size();++i) {
+    if (prices[i] > buy) maxPro = max(maxPro, prices[i] - buy);
+    else buy = prices[i];
+  }
+  return maxPro;
+}
+//2. 允许买卖多次
+int maxProfitBuySellMultiTimes(vector<int> &prices) {
+  if (prices.size() < 2) return 0;
+  int total = 0;
+  for (int i = 0;i < prices.size() - 1;++i) {
+    if (prices[i + 1] - prices[i]) total += prices[i + 1] - prices[i];
+  }
+  return total;
+}
+//3. 最多买卖两次
+int maxProfitBuySellTwiceMost(vector<int> &prices) {
+  if (prices.size() < 2) return 0;
+  int n = prices.size();
+  vector<int> preProfit(n);
+  vector<int> postProfit(n);
+  int curMin = prices[0],curMax = prices[n-1];
+  for (int i = 1;i < n - 1;++i) {
+    curMin = min(curMin, prices[i]);
+    preProfit[i] = max(preProfit[i - 1], prices[i] - curMin);
+  }
+  for (int i = n - 2;i >= 0;--i) {
+    curMax = max(curMax, prices[i]);
+    postProfit[i] = max(postProfit[i + 1], curMax - prices[i]);
+  }
+  int maxPro = 0;
+  for (int i = 0;i < n;++i) {
+    maxPro = max(maxPro, preProfit[i] + postProfit[i]);
+  }
+  return maxPro;
+}
+//4. 最多买卖k次
+int maxProfitBuySellKMost(vector<int> &prices) {
+
+}
+//5. 交易后需要休息一天
+int maxProfitBuySellWithCD(vector<int> &prices) {
+
+}
+//eight queens

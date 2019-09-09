@@ -28,6 +28,13 @@ void outputList(ListNode *head) {
   }
   cout << endl;
 }
+
+ListNode *dumpList(ListNode *head) {
+  if (head == nullptr) return nullptr;
+  ListNode *dump = new ListNode(head->val);
+  dump->next = dumpList(head->next);
+  return dump;
+}
 /*************************************************/
 
 //reverse List
@@ -126,4 +133,19 @@ ListNode *oddEvenSort(ListNode *head) {
   }
   pre->next = helper2->next;
   return head;
+}
+
+//if the List is palindrome
+bool isPalindrome(ListNode *head) {
+  if (head == nullptr) return false;
+  else if (head->next == nullptr)return true;
+  ListNode*revHead = reverseList(dumpList(head));
+  ListNode*p1 = head, *p2 = revHead;
+  while (p1 != nullptr || p2 != nullptr) {
+    if (p1->val != p2->val)return false;
+    p1 = p1->next;
+    p2 = p2->next;
+  }
+  if (p1 == nullptr && p2 == nullptr)return true;
+  else return false;
 }

@@ -6,6 +6,7 @@
 #include "aboutLinkList.hpp"
 #include "binaryTree.hpp"
 #include "classicProb.hpp"
+#include "aboutGraph.hpp"
 
 using namespace std;
 
@@ -33,7 +34,35 @@ bool increaseString(string& s) {
   }
   return overFlow;
 }
-
+class base1 {
+public:
+  virtual void f(){}
+};
+class base2 {
+public:
+  virtual void g() {}
+};
+class de1{
+public:
+  de1() { ff(); }
+  virtual void e(){}
+  virtual void ff() {
+    cout << "de1::ff" << endl;
+  }
+  virtual ~de1() {
+    cout << "de1::deconstruct" << endl;
+  }
+};
+class de2 :public de1 {
+public:
+  de2() { ff(); }
+  virtual void ff() {
+    cout << "de2::ff" << endl;
+  }
+  virtual ~de2() {
+    cout << "de2::deconstruct" << endl;
+  }
+};
 int main() {
   //topkHeapSort topk;
   //topkQuickSort topk;
@@ -117,8 +146,10 @@ int main() {
   //  for (auto i : a) cout << i << " ";
   //  cout << endl;
   //}
-  string s;
-  cin >> s;
-  permutation(s);
+  //string s;
+  //cin >> s;
+  //permutation(s);
+  de2 d2;
+  d2.ff();
   return 0;
 }
